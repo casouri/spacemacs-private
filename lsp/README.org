@@ -1,0 +1,43 @@
+#+TITLE: lsp layer
+
+# TOC links should be GitHub style anchors.
+* Table of Contents                                        :TOC_4_gh:noexport:
+- [[#description][Description]]
+  - [[#features][Features:]]
+- [[#install][Install]]
+- [[#key-bindings][Key bindings]]
+- Variables
+
+* Description
+This layer adds support for lsp language server.
+
+** Features:
+
+* Install
+To use this configuration layer, add it to your =~/.spacemacs=. You will need to
+add =lsp= to the existing =dotspacemacs-configuration-layers= list in this
+file.
+
+* Key bindings
+
+* Variables
+
+- lsp-enable-eldoc t
+    "Enable `eldoc-mode' integration."
+- lsp-highlight-symbol-at-point t
+  "Highlight the symbol under the point."
+
+- lsp-enable-codeaction t
+  "Enable code action processing."
+
+- lsp-enable-completion-at-point t
+  "Enable `completion-at-point' integration."
+
+- lsp-enable-xref t
+  "Enable xref integration."
+
+- lsp-enable-flycheck t
+  "Enable flycheck integration."
+
+- lsp-enable-indentation t
+  "Indent regions using the file formatting functionality provided by the language server."
