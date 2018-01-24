@@ -16,20 +16,18 @@
     json-mode
     evil
     org-mode
-    nlinum
     python
     google-translate
     dired
-    flycheck-mypy
+    hlinum
     ))
 
 (defun config/init-json-mode ()
   (use-package json-mode
-    :defer t))
+    :mode ("\\.json\\'" . json-mode)))
 
 (defun config/init-switch-input-mode ()
   (use-package switch-input-mode
-    :defer t
     :config
     (setq switch-input-source0 "com.apple.keylayout.ABC")
     (setq switch-input-source1 "com.apple.inputmethod.SCIM.ITABC")
@@ -43,14 +41,6 @@
     (setq nyan-wavy-trail t)
     (setq nyan-animate-nyancat t)
     ))
-(defun config/init-flycheck-mypy ()
-  (use-package flycheck-mypy
-    :defer t
-    :hook flycheck-mode-hook
-    :config
-    (flycheck-add-next-checker 'python-flake8 'python-mypy t)
-    )
-  )
 
 (defun config/post-init-evil ()
   ;; uer evil-search instead of isearch
@@ -72,23 +62,11 @@
 (defun config/post-init-org-mode ()
   ;; soft wrap for org-mode
   (setq org-startup-truncated nil)
-)
-
-(defun config/post-init-nlinum ()
-  ;; line numbers have different background color than buffer, this snippet set it to same
-  (add-hook 'linum-before-numbering-hook 'match-number-line-backgroud-color)
-  (add-hook 'spacemacs-post-theme-change-hook 'match-number-line-backgroud-color)
   )
 
-(defun config/post-init-spaceline ()
-  ;; off color separator
-  (setq powerline-default-separator nil)
-  ;; set color dimmer but no color off
-  ;;(setq ns-use-srgb-colorspace nil)
-  )
 (defun config/post-init-python ()
   (setq python-indent-offset 4)
-)
+  )
 
 (defun config/post-init-google-translate ()
   (setq google-translate-default-target-language "zh")
@@ -114,5 +92,17 @@
   (spacemacs/set-leader-keys (kbd "ooD") 'jump-to-Desktop)
   (spacemacs/set-leader-keys (kbd "ooa") 'jump-to-attic)
   (spacemacs/set-leader-keys (kbd "oob") 'jump-to-bin))
+
+(defun config/init-hlinum ()
+  (use-package hlinum
+    :config
+    (progn
+      (hlinum-activate)
+      (set-face-attribute 'linum-highlight-face nil
+                          :background (face-attribute 'hl-line :background)
+                          :foreground (face-attribute 'font-lock-keyword-face :foreground)
+                          :weight 'bold
+                          )
+    )))
 
 ;;; packages.el ends here
