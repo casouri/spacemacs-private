@@ -138,7 +138,9 @@
       (ido-mode -1)
 
       ;; allow to select prompt in some ivy functions
-      (setq ivy-use-selectable-prompt t))))
+      (setq ivy-use-selectable-prompt t)
+      (spacemacs|diminish lsp-mode " ⓘ" " i")
+      )))
 
 (defun ivy-l/init-ivy-hydra ()
   (use-package ivy-hydra)

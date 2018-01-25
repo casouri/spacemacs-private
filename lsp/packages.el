@@ -4,7 +4,6 @@
     (ivy-xref :requires ivy)
     lsp-mode
     lsp-ui
-    markdown-mode  ;; depended by lsp-ui
     ))
 
 (defun lsp/init-company-lsp ()
@@ -53,7 +52,6 @@
     ;; set peek color face
     (sync-peek-face)
     (add-hook 'spacemacs-post-theme-change-hook #'sync-peek-face)
+    (spacemacs|diminish lsp-mode " Ⓛ" " L")
     ))
 
-(defun lsp/init-markdown-mode ()
-  (use-package markdown-mode))
