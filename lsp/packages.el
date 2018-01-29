@@ -35,6 +35,7 @@
     (add-hook 'lsp-after-open-hook #'lsp-enable-imenu)
     ;; Disable lsp-flycheck.el in favor of lsp-ui-flycheck.el
     (setq lsp-enable-flycheck nil)
+    (spacemacs|diminish lsp-mode " Ⓛ" " L")
     ))
 
 (defun lsp/init-lsp-ui ()
@@ -52,6 +53,5 @@
     ;; set peek color face
     (sync-peek-face)
     (add-hook 'spacemacs-post-theme-change-hook #'sync-peek-face)
-    (spacemacs|diminish lsp-mode " Ⓛ" " L")
     ))
 

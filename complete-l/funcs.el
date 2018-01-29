@@ -84,11 +84,12 @@ Available PROPS:
 
 
 (defun spacemacs//show-snippets-in-company (backend)
-  (if (or (not auto-completion-enable-snippets-in-popup)
+  (if (or (not complete-l-enable-snippets-in-popup)
           (and (listp backend) (member 'company-yasnippet backend)))
       backend
     (append (if (consp backend) backend (list backend))
             '(:with company-yasnippet))))
+
 (defun spacemacs//complete-l-set-RET-key-behavior (package)
   "Bind RET key appropriately for the given PACKAGE and value of
 `complete-l-return-key-behavior'."

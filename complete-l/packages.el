@@ -104,7 +104,8 @@
        'spacemacs/force-yasnippet-off '(term-mode-hook
                                         shell-mode-hook
                                         eshell-mode-hook)))
-    :config (spacemacs|diminish yas-minor-mode " ⓨ" " y")))
+    :config (spacemacs|diminish yas-minor-mode " ⓨ" " y")
+    ))
 
 (defun complete-l/init-auto-yasnippet ()
   (use-package auto-yasnippet

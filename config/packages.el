@@ -20,6 +20,7 @@
     google-translate
     dired
     hlinum
+    spaceline
     ))
 
 (defun config/init-json-mode ()
@@ -98,11 +99,37 @@
     :config
     (progn
       (hlinum-activate)
-      (set-face-attribute 'linum-highlight-face nil
-                          :background (face-attribute 'hl-line :background)
-                          :foreground (face-attribute 'font-lock-keyword-face :foreground)
-                          :weight 'bold
-                          )
-    )))
+      (sync-hlinum-face)
+      (add-hook 'spacemacs-post-theme-change-hook #'sync-hlinum-face)
+      )))
+
+(defun config/post-init-spaceline ()
+  (spaceline-define-segment emc
+    "Evil-mc cursor count in modeline"
+    (when (> (evil-mc-get-cursor-count) 1)
+      (format "EMC::%d" (evil-mc-get-cursor-count)))
+    )
+
+  (defun custom-spaceline-spacemacs-theme (&rest additional-segments)
+    "Install the modeline used by Spacemacs.
+ADDITIONAL-SEGMENTS are inserted on the right, between `global' and
+`buffer-position'."
+    (apply 'spaceline--theme
+           '((persp-name
+              workspace-number
+              window-number
+              emc)
+             :fallback evil-state
+             :face highlight-face
+             :priority 0)
+           '((buffer-modified buffer-size buffer-id remote-host)
+             :priority 5)
+           additional-segments))
+
+  (custom-spaceline-spacemacs-theme)
+
+
+  (setq-default mode-line-format '("%e" (:eval (spaceline-ml-main))))
+  )
 
 ;;; packages.el ends here

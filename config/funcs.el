@@ -52,3 +52,12 @@
   (previous-line)
   (previous-line)
   )
+
+(defun sync-hlinum-face ()
+  (set-face-attribute
+   'linum-highlight-face nil
+   :background (face-attribute 'hl-line :background)
+   :foreground (face-attribute 'font-lock-keyword-face :foreground)
+   :weight 'bold
+   ))
+

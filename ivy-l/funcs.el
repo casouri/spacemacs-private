@@ -16,3 +16,4 @@
 (defun spacemacs/ivy-insert-evil-register (candidate)
   (insert (replace-regexp-in-string "\\^J" "\n"
                                     (substring-no-properties candidate 4))))
+

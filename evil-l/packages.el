@@ -38,6 +38,7 @@
     evil-terminal-cursor-changer
     evil-matchit
     vi-tilde-fringe
+    evil
     ))
 
 (defun evil-l/init-vi-tilde-fringe ()
@@ -190,12 +191,18 @@
     :defer t
     :init
     ;; remove emc prefix when there is not multiple cursors
-    (setq evil-mc-mode-line
-          `(:eval (when (> (evil-mc-get-cursor-count) 1)
-                    (format ,(propertize " %s:%d" 'face 'cursor)
-                            evil-mc-mode-line-prefix
-                            (evil-mc-get-cursor-count)))))
+    ;; (setq evil-mc-mode-line
+    ;;       `(:eval (when (> (evil-mc-get-cursor-count) 1)
+    ;;                 (format ,(propertize " %s:%d" 'face 'cursor)
+    ;;                         evil-mc-mode-line-prefix
+    ;;                         (evil-mc-get-cursor-count)))))
     (global-evil-mc-mode 1)
+    (spacemacs|diminish evil-mc-mode)
     ))
 
+(defun evil-l/post-init-evil ()
+  ;; fix paste issue in evil visual mode
+  ;; http://emacs.stackexchange.com/questions/14940/emacs-doesnt-paste-in-evils-visual-mode-with-every-os-clipboard/15054#15054
+  (fset 'evil-visual-update-x-selection 'ignore)
+  )
 ;;; packages.el ends here

@@ -25,3 +25,4 @@ than this amount.")
     ("d" spacemacs/delete-file-confirm "delete file")
     ("r" spacemacs/rename-file "rename file"))
   "Default ivy actions for files.")
+
