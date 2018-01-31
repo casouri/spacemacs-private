@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: matplotlib template
+# key: plt_
+# --
+plt.plot([1, 2, 3, 4], [1, 4, 9, 16], '--ro')
+plt.ylabel('some numbers')
+plt.xlabel('some numbers')
+plt.xlim(0, 6)
+plt.ylim(0, 20)
+plt.title('Plot of y vs. x')
+plt.show()

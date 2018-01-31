@@ -11,5 +11,12 @@
 
 ;; insert ;
 (define-key evil-insert-state-map (kbd "C-;") 'insert-semi-at-eol)
-(define-key evil-hybrid-state-map (kbd "C-;") 'insert-semi-at-eol)
 
+;; simple hybrid mode
+
+(define-key evil-insert-state-map (kbd "C-n") #'next-line)
+(define-key evil-insert-state-map (kbd "C-p") #'previous-line)
+(define-key evil-insert-state-map (kbd "C-f") #'forward-char)
+(define-key evil-insert-state-map (kbd "C-b") #'backward-char)
+(define-key evil-insert-state-map (kbd "C-a") #'beginning-of-line)
+(define-key evil-insert-state-map (kbd "C-e") #'end-of-line)
